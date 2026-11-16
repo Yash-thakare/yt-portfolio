@@ -1,0 +1,10 @@
+/* Portfolio styles. Layout comes from Tailwind utilities; this file holds custom behaviour. */
+html { scroll-behavior: smooth; }
+body { background: #F2F5F9; color: #12223B; }
+.chip { transition: background .2s, color .2s, border-color .2s; }
+.chip[aria-pressed="true"] { background: #12223B; color: #fff; border-color: #12223B; }
+.bar { transition: width .6s cubic-bezier(.2,.8,.2,1); }
+.caret::after { content: "▍"; color: #7DE3C8; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+:focus-visible { outline: 3px solid #3A4BDB; outline-offset: 2px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .caret::after { animation: none; } .bar { transition: none; } }

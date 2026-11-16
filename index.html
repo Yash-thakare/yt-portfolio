@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yashwant Thakare | Full Stack Developer (Laravel, React, AWS, RAG)</title>
+<meta name="description" content="Full Stack Developer with 2+ years building Laravel and React applications on AWS. Open to relocation to the UAE.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Yashwant Thakare | Full Stack Developer">
+<meta property="og:description" content="Laravel, React, AWS and RAG. Open to relocation to the UAE.">
+<meta property="og:image" content="assets/img/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#12223B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="js/tailwind.config.js"></script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="font-sans antialiased">
+
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-line">
+  <nav class="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between" aria-label="Main">
+    <a href="#top" class="font-display font-bold text-lg">Yashwant Thakare</a>
+    <ul class="hidden md:flex gap-7 text-sm font-medium text-mute">
+      <li><a class="hover:text-ink" href="#ask">Ask my resume</a></li>
+      <li><a class="hover:text-ink" href="#showreel">Showreel</a></li>
+      <li><a class="hover:text-ink" href="#experience">Experience</a></li>
+      <li><a class="hover:text-ink" href="#skills">Skills</a></li>
+      <li><a class="hover:text-ink" href="#projects">Projects</a></li>
+      <li><a class="hover:text-ink" href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="text-sm font-semibold bg-ink text-white px-4 py-2 rounded-lg hover:bg-indigoX transition">Hire me</a>
+  </nav>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="max-w-6xl mx-auto px-5 pt-14 pb-10 md:pt-20">
+  <p class="inline-flex items-center gap-2 text-sm font-medium bg-white border border-line rounded-full px-3 py-1">
+    <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Open to relocation to the UAE
+  </p>
+  <h1 class="font-display font-extrabold tracking-tight text-5xl md:text-7xl leading-[1.02] mt-6 max-w-4xl">
+    I build Laravel and React products that stay fast, secure and online.
+  </h1>
+  <p class="mt-6 text-lg text-mute max-w-2xl leading-relaxed">
+    Full Stack Developer in Mumbai with 2+ years of experience. I design scalable REST APIs, real-time features and AWS deployments, and I'm now adding RAG and AI to everything I ship.
+  </p>
+  <div class="mt-8 flex flex-wrap gap-3">
+    <a href="#ask" class="bg-indigoX text-white font-semibold px-5 py-3 rounded-lg hover:opacity-90 transition">Ask my resume a question</a>
+    <a href="Yashwant_Thakare-Resume.pdf" class="border border-ink font-semibold px-5 py-3 rounded-lg hover:bg-ink hover:text-white transition" download>Download resume</a>
+  </div>
+
+  <dl class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 border-t border-line pt-8">
+    <div><dt class="text-sm text-mute">Active HR portal users</dt><dd class="font-display font-bold text-4xl mt-1"><span data-count="100">0</span>+</dd></div>
+    <div><dt class="text-sm text-mute">Faster support response</dt><dd class="font-display font-bold text-4xl mt-1"><span data-count="40">0</span>%</dd></div>
+    <div><dt class="text-sm text-mute">Better page load after indexing</dt><dd class="font-display font-bold text-4xl mt-1"><span data-count="35">0</span>%</dd></div>
+    <div><dt class="text-sm text-mute">Concurrent users supported</dt><dd class="font-display font-bold text-4xl mt-1"><span data-count="1000">0</span>+</dd></div>
+  </dl>
+</section>
+
+<!-- RAG DEMO -->
+<section id="ask" class="max-w-6xl mx-auto px-5 py-10">
+  <div class="bg-panel text-slate-200 rounded-2xl p-5 md:p-8 shadow-xl">
+    <div class="md:flex justify-between items-end gap-6">
+      <div>
+        <h2 class="font-display font-bold text-3xl text-white">Ask my resume</h2>
+        <p class="text-slate-400 mt-2 max-w-xl">A small retrieval-augmented demo. Your question is matched against chunks of my resume, and the answer is built only from what is retrieved.</p>
+      </div>
+      <p class="font-mono text-xs text-slate-400 mt-4 md:mt-0 md:text-right">Runs in your browser (TF-IDF retrieval).<br>Production version: S3 → Bedrock embeddings → OpenSearch → Lambda.</p>
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-2" id="suggestions"></div>
+
+    <div class="mt-5 flex gap-2">
+      <label for="q" class="sr-only">Your question</label>
+      <input id="q" type="text" placeholder="e.g. What AWS experience does Yashwant have?" class="flex-1 bg-[#0B1424] border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:border-mint">
+      <button id="askBtn" class="bg-mint text-[#0B1424] font-semibold px-5 rounded-lg hover:opacity-90">Ask</button>
+    </div>
+
+    <div class="mt-6 grid md:grid-cols-5 gap-6">
+      <div class="md:col-span-2">
+        <h3 class="font-mono text-xs text-slate-400 mb-3">Retrieved chunks</h3>
+        <ul id="chunks" class="space-y-3 text-sm" aria-live="polite"></ul>
+      </div>
+      <div class="md:col-span-3">
+        <h3 class="font-mono text-xs text-slate-400 mb-3">Answer</h3>
+        <p id="answer" class="text-white leading-relaxed min-h-[7rem]" aria-live="polite">Pick a question above or type your own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SHOWREEL -->
+<section id="showreel" class="max-w-6xl mx-auto px-5 py-14">
+  <h2 class="font-display font-bold text-3xl md:text-4xl">How I work</h2>
+  <p class="mt-3 text-mute max-w-2xl">A short intro, the RAG architecture I'm building towards on AWS, and the kind of real-time Laravel code I write every day.</p>
+  <div class="mt-8 rounded-2xl overflow-hidden border border-line bg-panel">
+    <video class="w-full" controls preload="metadata" playsinline muted loop poster="assets/video/poster.jpg" aria-label="Intro video: Yashwant Thakare, Full Stack Developer">
+      <source src="assets/video/intro.mp4" type="video/mp4">
+      Your browser does not support video.
+    </video>
+  </div>
+  <div class="mt-6 grid md:grid-cols-2 gap-6">
+    <figure class="rounded-2xl overflow-hidden border border-line bg-panel">
+      <img src="assets/img/rag-pipeline.gif" alt="Animated diagram: resume in S3, embedded with Bedrock, searched in OpenSearch, answered by Lambda and an LLM" loading="lazy" width="960" height="380" class="w-full h-auto">
+      <figcaption class="px-4 py-3 text-sm text-slate-300">RAG pipeline on AWS</figcaption>
+    </figure>
+    <figure class="rounded-2xl overflow-hidden border border-line bg-panel">
+      <img src="assets/img/code-typing.gif" alt="Animated code editor typing a Laravel controller that broadcasts a chat message" loading="lazy" width="880" height="400" class="w-full h-auto">
+      <figcaption class="px-4 py-3 text-sm text-slate-300">Real-time chat with Laravel broadcasting</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="max-w-6xl mx-auto px-5 py-14">
+  <h2 class="font-display font-bold text-3xl md:text-4xl">Experience</h2>
+  <div class="mt-8 grid md:grid-cols-3 gap-8">
+    <div class="flex md:flex-col gap-2" role="tablist" aria-label="Jobs" id="tabs"></div>
+    <div class="md:col-span-2" id="job" role="tabpanel" aria-live="polite"></div>
+  </div>
+  <div class="mt-12 grid md:grid-cols-2 gap-8 border-t border-line pt-8">
+    <div>
+      <h3 class="font-display font-bold text-xl">Education</h3>
+      <p class="mt-3 font-semibold">PG Diploma in Advanced Computing (PG-DAC)</p>
+      <p class="text-mute text-sm">C-DAC, Bengaluru, 2023</p>
+      <p class="mt-3 font-semibold">Bachelor of Technology</p>
+      <p class="text-mute text-sm">2019 to 2022</p>
+    </div>
+    <div>
+      <h3 class="font-display font-bold text-xl">Certifications</h3>
+      <ul class="mt-3 space-y-2 text-sm">
+        <li><span class="font-semibold">AWS Certified Solutions Architect</span> <span class="text-amberX font-semibold">in progress</span>, Network Kings</li>
+        <li><span class="font-semibold">Introduction to RAG</span>, Great Learning</li>
+        <li><span class="font-semibold">Introduction to Artificial Intelligence</span>, Simplilearn, 2025</li>
+        <li><span class="font-semibold">Agile Methodology Job Simulation</span>, JPMorgan Chase &amp; Co., 2023</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="bg-white border-y border-line">
+  <div class="max-w-6xl mx-auto px-5 py-14">
+    <h2 class="font-display font-bold text-3xl md:text-4xl">Skills</h2>
+    <div class="mt-6 flex flex-wrap gap-2" id="skillFilters" role="group" aria-label="Filter skills"></div>
+    <ul class="mt-6 flex flex-wrap gap-2" id="skillList"></ul>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="max-w-6xl mx-auto px-5 py-14">
+  <h2 class="font-display font-bold text-3xl md:text-4xl">Projects</h2>
+  <div class="mt-8 grid md:grid-cols-3 gap-6" id="projectGrid"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="max-w-6xl mx-auto px-5 pb-20">
+  <div class="bg-ink text-white rounded-2xl p-8 md:p-12">
+    <h2 class="font-display font-bold text-3xl md:text-5xl max-w-2xl leading-tight">Hiring in the UAE? Let's talk.</h2>
+    <p class="mt-4 text-slate-300 max-w-xl">I'm available to relocate and can start conversations right away.</p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="mailto:yashwantthakare4444@gmail.com" class="bg-white text-ink font-semibold px-5 py-3 rounded-lg hover:bg-mint transition">Email me</a>
+      <a href="tel:+918806420045" class="border border-white/40 font-semibold px-5 py-3 rounded-lg hover:bg-white/10 transition">+91 880-642-0045</a>
+      <!-- Replace # with your LinkedIn URL -->
+      <a href="#" class="border border-white/40 font-semibold px-5 py-3 rounded-lg hover:bg-white/10 transition">LinkedIn</a>
+      <button id="copyMail" class="border border-white/40 font-semibold px-5 py-3 rounded-lg hover:bg-white/10 transition">Copy email</button>
+    </div>
+  </div>
+  <p class="text-center text-sm text-mute mt-8">© <span id="yr"></span> Yashwant Thakare · Mumbai, India</p>
+</section>
+</main>
+
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
